@@ -23,5 +23,17 @@
 
             $this->assertEquals($title, $result);
         }
+
+        function testSetTitle()
+        {
+            $title = "The Little Prince";
+            $test_book = new Book($title);
+            $new_title = "The Book of Laughter and Forgetting";
+
+            $test_book->setTitle($new_title);
+            $result = $test_book->getTitle();
+
+            $this->assertEquals($new_title, $result);
+        }
     }
 ?>
