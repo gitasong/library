@@ -89,6 +89,21 @@
                 return false;
             }
         }
+
+        static function findBookByTitle($search_title)
+        {
+            $returned_books = $GLOBALS['DB']->prepare("SELECT * FROM books WHERE title = :title");
+            $returned_books->bindParam(':title', $search_title, PDO::PARAM_STR);
+            $returned_books->execute();
+            foreach ($returned_books as $book) {
+                $book_title = $book['title'];
+                $book_id = $book['id'];
+                if ($book_title == $search_title) {
+                    $returned_book = new Book($book_title, $book_id);
+                }
+            }
+            return $returned_book;
+        }
     }
 
 
