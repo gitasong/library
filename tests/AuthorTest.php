@@ -14,10 +14,10 @@
 
     class AuthorTest extends PHPUnit_Framework_TestCase
     {
-        // protected function tearDown()
-        // {
-        //     Author::deleteAll();
-        // }
+        protected function tearDown()
+        {
+            Author::deleteAll();
+        }
 
         function testGetAuthorName()
         {
@@ -63,37 +63,37 @@
 
         }
 
-        // function testGetAll()
-        // {
-        //     $author_name_1 = "Secrets of the Talking Jaguar";
-        //     $test_author_1 = new Author($author_name_1);
-        //     $test_author_1->save();
-        //
-        //     $author_name_2 = "The Smell of Rain on Dust";
-        //     $test_author_2 = new Author($author_name_2);
-        //     $test_author_2->save();
-        //
-        //     $result = Author::getAll();
-        //
-        //     $this->assertEquals([$test_author_1, $test_author_2], $result);
-        // }
-        //
-        // function testDeleteAll()
-        // {
-        //     $author_name_1 = "Secrets of the Talking Jaguar";
-        //     $test_author_1 = new Author($author_name_1);
-        //     $test_author_1->save();
-        //
-        //     $author_name_2 = "The Smell of Rain on Dust";
-        //     $test_author_2 = new Author($author_name_2);
-        //     $test_author_2->save();
-        //
-        //     Author::deleteAll();
-        //     $result = Author::getAll();
-        //
-        //     $this->assertEquals([], $result);
-        // }
-        //
+        function testGetAll()
+        {
+            $author_name_1 = "Secrets of the Talking Jaguar";
+            $test_author_1 = new Author($author_name_1);
+            $test_author_1->save();
+
+            $author_name_2 = "The Smell of Rain on Dust";
+            $test_author_2 = new Author($author_name_2);
+            $test_author_2->save();
+
+            $result = Author::getAll();
+
+            $this->assertEquals([$test_author_1, $test_author_2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            $author_name_1 = "Secrets of the Talking Jaguar";
+            $test_author_1 = new Author($author_name_1);
+            $test_author_1->save();
+
+            $author_name_2 = "The Smell of Rain on Dust";
+            $test_author_2 = new Author($author_name_2);
+            $test_author_2->save();
+
+            Author::deleteAll();
+            $result = Author::getAll();
+
+            $this->assertEquals([], $result);
+        }
+
         // function testFind()
         // {
         //     $author_name_1 = "Secrets of the Talking Jaguar";

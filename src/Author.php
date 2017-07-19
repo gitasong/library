@@ -36,23 +36,23 @@
             return $this->id;
         }
 
-        // static function getAll()
-        // {
-        //     $returned_authors = $GLOBALS['DB']->query("SELECT * FROM authors");
-        //     $authors = array();
-        //     foreach($returned_authors as $author) {
-        //         $author_author_name = $author['author_name'];
-        //         $author_id = $author['id'];
-        //         $new_author = new Author($author_author_name, $author_id);
-        //         array_push($authors, $new_author);
-        //     }
-        //     return $authors;
-        // }
-        //
-        // static function deleteAll()
-        // {
-        //     $GLOBALS['DB']->exec("DELETE FROM authors;");
-        // }
+        static function getAll()
+        {
+            $returned_authors = $GLOBALS['DB']->query("SELECT * FROM authors");
+            $authors = array();
+            foreach($returned_authors as $author) {
+                $author_author_name = $author['author_name'];
+                $author_id = $author['id'];
+                $new_author = new Author($author_author_name, $author_id);
+                array_push($authors, $new_author);
+            }
+            return $authors;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM authors;");
+        }
         //
         // static function find($search_id)
         // {
