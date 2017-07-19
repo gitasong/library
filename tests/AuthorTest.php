@@ -109,17 +109,17 @@
             $this->assertEquals($test_author_2, $result);
         }
 
-        // function testUpdateAuthorName()
-        // {
-        //     $author_name = "The Little Prince";
-        //     $test_author = new Author($author_name);
-        //     $test_author->save();
-        //     $new_author_name = "The Author of Laughter and Forgetting";
-        //
-        //     $test_author->updateAuthorName($new_author_name);
-        //
-        //     $this->assertEquals("The Author of Laughter and Forgetting", $test_author->getAuthorName());
-        // }
+        function testUpdateAuthorName()
+        {
+            $author_name = "The Little Prince";
+            $test_author = new Author($author_name);
+            $test_author->save();
+            $new_author_name = "The Author of Laughter and Forgetting";
+
+            $test_author->updateAuthorName($new_author_name);
+
+            $this->assertEquals("The Author of Laughter and Forgetting", $test_author->getAuthorName());
+        }
         //
         // function testDelete()
         // {

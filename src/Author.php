@@ -69,16 +69,16 @@
             return $returned_author;
         }
 
-        // function updateAuthorName($new_author_name)
-        // {
-        //     $executed = $GLOBALS['DB']->exec("UPDATE authors SET author_name = '{$new_author_name}' WHERE id = {$this->getId()};");
-        //     if ($executed) {
-        //         $this->setAuthorName($new_author_name);
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }
+        function updateAuthorName($new_author_name)
+        {
+            $executed = $GLOBALS['DB']->exec("UPDATE authors SET author_name = '{$new_author_name}' WHERE id = {$this->getId()};");
+            if ($executed) {
+                $this->setAuthorName($new_author_name);
+                return true;
+            } else {
+                return false;
+            }
+        }
         //
         // function delete()
         // {
