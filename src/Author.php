@@ -79,16 +79,16 @@
                 return false;
             }
         }
-        //
-        // function delete()
-        // {
-        //     $executed = $GLOBALS['DB']->exec("DELETE FROM authors WHERE id = {$this->getId()};");
-        //     if ($executed) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }
+
+        function delete()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM authors WHERE id = {$this->getId()};");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
 
