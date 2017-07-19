@@ -21,6 +21,12 @@
 
             <button type="submit" name="button">Update Book</button>
         </form>
+
+        <form action="/delete_book/{{ book.getId }}" method="post">
+            <input name="_method" type="hidden" value="delete">
+
+            <button type="submit">Delete Book</button>
+        </form>
     <p><a href="/">Home</a></p>
     </body>
 </html>
