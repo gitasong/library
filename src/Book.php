@@ -24,7 +24,7 @@
         {
             $executed = $GLOBALS['DB']->exec("INSERT INTO books (title) VALUES ('{$this->getTitle()}')");
             if ($executed) {
-                $this->id= $GLOBALS['DB']->lastInsertId();
+                $this->id = $GLOBALS['DB']->lastInsertId();
                 return true;
             } else {
                 return false;
@@ -38,7 +38,7 @@
 
         static function getAll()
         {
-            $returned_books = $GLOBALS['DB']->query("SELECT * FROM books;");
+            $returned_books = $GLOBALS['DB']->query("SELECT * FROM books");
             $books = array();
             foreach($returned_books as $book) {
                 $book_title = $book['title'];
@@ -63,7 +63,7 @@
                 $book_title = $book['title'];
                 $book_id = $book['id'];
                 if ($book_id == $search_id) {
-                    $found_book = new Book($book_title, $book_id);
+                    $returned_book = new Book($book_title, $book_id);
                 }
             }
             return $found_book;

@@ -6,7 +6,7 @@
         <h1>Welcome to Midtown Public Library! | Home</h1>
 
         <h2>Add A Book</h2>
-        <form action="/" name="add_book" method="post">
+        <form action="/add_book" name="add_book" method="post">
             <label for="title">Add A Book: </label>
             <input type="title" name="title" type="text" required>
 
@@ -15,7 +15,7 @@
 
         <h2>Catalog | View All Books</h2>
         {% if all_books is not empty %}
-            {% for book in books %}
+            {% for book in all_books %}
                 <p>{{ book.getTitle }}</p>
             {% endfor %}
         {% endif %}
