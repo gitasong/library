@@ -16,7 +16,7 @@
         <h2>Catalog | View All Books</h2>
         {% if all_books is not empty %}
             {% for book in all_books %}
-                <p>{{ book.getTitle }}</p>
+                <p><a href="/edit_book/{{ book.getId }}">{{ book.getTitle }}</a></p>
             {% endfor %}
         {% endif %}
     </body>

@@ -66,7 +66,7 @@
                     $returned_book = new Book($book_title, $book_id);
                 }
             }
-            return $found_book;
+            return $returned_book;
         }
 
         function updateTitle($new_title)
