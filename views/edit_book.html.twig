@@ -22,6 +22,14 @@
             <button type="submit" name="button">Update Book</button>
         </form>
 
+        <h2>Assign An Author To A Book</h2> <!-- needs to be dropdown menu -->
+        <form action="/assign_author" name="assign_author" method="post">
+            <label for="author_name">Add An Author: </label>
+            <input type="author_name" name="author_name" type="text" required>
+
+            <button type="submit" name="button">Add Author</button>
+        </form>
+
         <form action="/delete_book/{{ book.getId }}" method="post">
             <input name="_method" type="hidden" value="delete">
 
