@@ -46,13 +46,16 @@
             $this->assertTrue($executed, "Book not successfully saved to database");
         }
 
-        // function testGetId()
-        // {
-        //     $title = "Clifford";
-        //     $test_book = new Book($title);
-        //     $test_book->();
-        //
-        //
-        // }
+        function testGetId()
+        {
+            $title = "Clifford";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $result = $test_book->getId();
+
+            $this->assertEquals(true, is_numeric($result));
+
+        }
     }
 ?>
