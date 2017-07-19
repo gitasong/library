@@ -108,5 +108,17 @@
 
             $this->assertEquals($test_book_2, $result);
         }
+
+        function testUpdateTitle()
+        {
+            $title = "The Little Prince";
+            $test_book = new Book($title);
+            $test_book->save();
+            $new_title = "The Book of Laughter and Forgetting";
+
+            $test_book->updateTitle($new_title);
+
+            $this->assertEquals("The Book of Laughter and Forgetting", $test_book->getTitle());
+        }
     }
 ?>

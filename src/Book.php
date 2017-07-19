@@ -60,13 +60,24 @@
             $returned_books->bindParam(':id', $search_id, PDO::PARAM_STR);
             $returned_books->execute();
             foreach ($returned_books as $book) {
-                $book_name = $book['title'];
+                $book_title = $book['title'];
                 $book_id = $book['id'];
                 if ($book_id == $search_id) {
-                    $found_book = new Book($book_name, $book_id);
+                    $found_book = new Book($book_title, $book_id);
                 }
             }
             return $found_book;
+        }
+
+        function updateTitle($new_title)
+        {
+            $executed = $GLOBALS['DB']->exec("UPDATE books SET title = '{$new_title}' WHERE id = {$this->getID()};");
+            if ($executed) {
+                $this->setTitle($new_title);
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
