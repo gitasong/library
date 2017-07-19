@@ -30,12 +30,12 @@
                 return false;
             }
         }
-        //
-        // function getId()
-        // {
-        //     return $this->id;
-        // }
-        //
+
+        function getId()
+        {
+            return $this->id;
+        }
+
         // static function getAll()
         // {
         //     $returned_authors = $GLOBALS['DB']->query("SELECT * FROM authors");

@@ -50,19 +50,19 @@
 
             $this->assertTrue($executed, "Author not successfully saved to database");
         }
-        //
-        // function testGetId()
-        // {
-        //     $author_name = "Clifford";
-        //     $test_author = new Author($author_name);
-        //     $test_author->save();
-        //
-        //     $result = $test_author->getId();
-        //
-        //     $this->assertEquals(true, is_numeric($result));
-        //
-        // }
-        //
+
+        function testGetId()
+        {
+            $author_name = "Clifford";
+            $test_author = new Author($author_name);
+            $test_author->save();
+
+            $result = $test_author->getId();
+
+            $this->assertEquals(true, is_numeric($result));
+
+        }
+
         // function testGetAll()
         // {
         //     $author_name_1 = "Secrets of the Talking Jaguar";
