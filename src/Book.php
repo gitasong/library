@@ -53,6 +53,21 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM books;");
         }
+
+        static function find($search_id)
+        {
+            $returned_books = $GLOBALS['DB']->prepare("SELECT * FROM books WHERE id = :id");
+            $returned_books->bindParam(':id', $search_id, PDO::PARAM_STR);
+            $returned_books->execute();
+            foreach ($returned_books as $book) {
+                $book_name = $book['title'];
+                $book_id = $book['id'];
+                if ($book_id == $search_id) {
+                    $found_book = new Book($book_name, $book_id);
+                }
+            }
+            return $found_book;
+        }
     }
 
 
