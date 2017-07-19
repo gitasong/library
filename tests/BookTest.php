@@ -120,5 +120,20 @@
 
             $this->assertEquals("The Book of Laughter and Forgetting", $test_book->getTitle());
         }
+
+        function testDelete()
+        {
+            $title_1 = "Secrets of the Talking Jaguar";
+            $test_book_1 = new Book($title_1);
+            $test_book_1->save();
+
+            $title_2 = "The Smell of Rain on Dust";
+            $test_book_2 = new Book($title_2);
+            $test_book_2->save();
+
+            $test_book_1->delete();
+
+            $this->assertEquals([$test_book_2], Book::getAll());
+        }
     }
 ?>
