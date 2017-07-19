@@ -20,16 +20,16 @@
             $this->author_name = (string) $new_author_name;
         }
 
-        // function save()
-        // {
-        //     $executed = $GLOBALS['DB']->exec("INSERT INTO authors (author_name) VALUES ('{$this->getAuthorName()}')");
-        //     if ($executed) {
-        //         $this->id = $GLOBALS['DB']->lastInsertId();
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }
+        function save()
+        {
+            $executed = $GLOBALS['DB']->exec("INSERT INTO authors (author_name) VALUES ('{$this->getAuthorName()}')");
+            if ($executed) {
+                $this->id = $GLOBALS['DB']->lastInsertId();
+                return true;
+            } else {
+                return false;
+            }
+        }
         //
         // function getId()
         // {

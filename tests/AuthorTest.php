@@ -41,15 +41,15 @@
             $this->assertEquals($new_author_name, $result);
         }
 
-        // function testSave()
-        // {
-        //     $author_name = "The Unbearable Lightness of Being";
-        //     $test_author = new Author($author_name);
-        //
-        //     $executed = $test_author->save();
-        //
-        //     $this->assertTrue($executed, "Author not successfully saved to database");
-        // }
+        function testSave()
+        {
+            $author_name = "The Unbearable Lightness of Being";
+            $test_author = new Author($author_name);
+
+            $executed = $test_author->save();
+
+            $this->assertTrue($executed, "Author not successfully saved to database");
+        }
         //
         // function testGetId()
         // {
