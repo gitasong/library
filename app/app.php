@@ -1,8 +1,7 @@
 <?php
 
     require_once __DIR__."/../vendor/autoload.php";
-    require_once __DIR__."/../src/Stylist.php";
-    require_once __DIR__."/../src/Client.php";
+    require_once __DIR__."/../src/Book.php";
 
     $server = 'mysql:host=localhost:8889;dbname=hair_salon';
     $username = 'root';
@@ -16,7 +15,7 @@
 
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
-    
+
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.html.twig');
     });
