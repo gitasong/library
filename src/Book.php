@@ -35,6 +35,24 @@
         {
             return $this->id;
         }
+
+        static function getAll()
+        {
+            $returned_books = $GLOBALS['DB']->query("SELECT * FROM books;");
+            $books = array();
+            foreach($returned_books as $book) {
+                $book_title = $book['title'];
+                $book_id = $book['id'];
+                $new_book = new Book($book_title, $book_id);
+                array_push($books, $new_book);
+            }
+            return $books;
+        }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM books;");
+        }
     }
 
 
