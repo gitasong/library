@@ -35,5 +35,24 @@
 
             $this->assertEquals($new_title, $result);
         }
+
+        function testSave()
+        {
+            $title = "The Unbearable Lightness of Being";
+            $test_book = new Book($title);
+
+            $executed = $test_book->save();
+
+            $this->assertTrue($executed, "Book not successfully saved to database");
+        }
+
+        // function testGetId()
+        // {
+        //     $title = "Clifford";
+        //     $test_book = new Book($title);
+        //     $test_book->();
+        //
+        //
+        // }
     }
 ?>
