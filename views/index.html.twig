@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Midtown Public Library | Home</title>
+    </head>
+    <body>
+        <h1>Welcome to Midtown Public Library! | Home</h1>
+
+        <h2>Add A Book</h2>
+        <form action="/" name="add_book" method="post">
+            <label for="title">Add A Book: </label>
+            <input type="title" name="title" type="text" required>
+
+            <button type="submit" name="button">Add Book</button>
+        </form>
+
+        <h2>Catalog | View All Books</h2>
+        {% if all_books is not empty %}
+            {% for book in books %}
+                <p>{{ book.getTitle }}</p>
+            {% endfor %}
+        {% endif %}
+    </body>
+</html>
