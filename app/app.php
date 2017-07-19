@@ -32,5 +32,12 @@
         return $app['twig']->render('edit_book.html.twig', array('book' => $book));
     });
 
+    $app->patch("/edit_book/{id}", function($id) use ($app) {
+        $title  = $_POST['title'];
+        $book = Book::find($id);
+        $book->updateTitle($title);
+        return $app['twig']->render('edit_book.html.twig', array('book' => $book));
+    });
+
     return $app;
 ?>
