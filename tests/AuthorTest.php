@@ -29,18 +29,18 @@
             $this->assertEquals($author_name, $result);
         }
 
-        // function testSetAuthorName()
-        // {
-        //     $author_name = "The Little Prince";
-        //     $test_author = new Author($author_name);
-        //     $new_author_name = "The Author of Laughter and Forgetting";
-        //
-        //     $test_author->setAuthorName($new_author_name);
-        //     $result = $test_author->getAuthorName();
-        //
-        //     $this->assertEquals($new_author_name, $result);
-        // }
-        //
+        function testSetAuthorName()
+        {
+            $author_name = "The Little Prince";
+            $test_author = new Author($author_name);
+            $new_author_name = "The Author of Laughter and Forgetting";
+
+            $test_author->setAuthorName($new_author_name);
+            $result = $test_author->getAuthorName();
+
+            $this->assertEquals($new_author_name, $result);
+        }
+
         // function testSave()
         // {
         //     $author_name = "The Unbearable Lightness of Being";

@@ -15,11 +15,11 @@
             return $this->author_name;
         }
 
-        // function setAuthorName($new_author_name)
-        // {
-        //     $this->author_name = (string) $new_author_name;
-        // }
-        //
+        function setAuthorName($new_author_name)
+        {
+            $this->author_name = (string) $new_author_name;
+        }
+
         // function save()
         // {
         //     $executed = $GLOBALS['DB']->exec("INSERT INTO authors (author_name) VALUES ('{$this->getAuthorName()}')");
