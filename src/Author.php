@@ -89,6 +89,29 @@
                 return false;
             }
         }
+
+        function addBook($book)
+        {
+            $executed = $GLOBALS['DB']->exec("INSERT INTO authors_books (author_id, book_id) VALUES ({$this->getId()}, {$book->getId()});");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function getBooks()
+        {
+            $returned_books = $GLOBALS['DB']->query("SELECT books.* FROM authors JOIN authors_books ON (authors_books.author_id = author_id) JOIN books ON (books.id = authors_books.book_id) WHERE authors.id = {$this->getId()};");
+            $books = array();
+            foreach($returned_books as $book) {
+                $title = $book['title'];
+                $book_id = $book['id'];
+                $new_book = new Book($title, $book_id);
+                array_push($books, $new_book);
+            }
+            return $books;
+        }
     }
 
 

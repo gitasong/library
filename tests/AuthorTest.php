@@ -6,6 +6,7 @@
     */
 
     require_once "src/Author.php";
+    require_once "src/Book.php";
 
     $server = 'mysql:host=localhost:8889;dbname=library_test';
     $username = 'root';
@@ -17,6 +18,7 @@
         protected function tearDown()
         {
             Author::deleteAll();
+            Book::deleteAll();
         }
 
         function testGetAuthorName()
@@ -136,6 +138,40 @@
             $this->assertEquals([$test_author_2], Author::getAll());
         }
 
-        
+        function testAddBook()
+        {
+            $title = "Good Times";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $author_name = "Maya Angelou";
+            $test_author = new Author($author_name);
+            $test_author->save();
+
+            $test_author->addBook($test_book);
+
+            $this->assertEquals($test_author->getBooks(), [$test_book]);
+        }
+
+        function testGetBooks()
+        {
+            $title = "Alice in Wonderland";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $$title = "Ghostwriter";
+            $test_book_2 = new Book($title);
+            $test_book_2->save();
+
+            $author_name = "Richard Ford";
+            $test_author = new Author($author_name);
+            $test_author->save();
+
+            $test_author->addBook($test_book);
+            $test_author->addBook($test_book_2);
+
+            $this->assertEquals($test_author->getBooks(), [$test_book, $test_book_2]);
+        }
+
     }
 ?>
