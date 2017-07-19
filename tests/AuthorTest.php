@@ -94,21 +94,21 @@
             $this->assertEquals([], $result);
         }
 
-        // function testFind()
-        // {
-        //     $author_name_1 = "Secrets of the Talking Jaguar";
-        //     $test_author_1 = new Author($author_name_1);
-        //     $test_author_1->save();
-        //
-        //     $author_name_2 = "The Smell of Rain on Dust";
-        //     $test_author_2 = new Author($author_name_2);
-        //     $test_author_2->save();
-        //
-        //     $result = Author::find($test_author_2->getId());
-        //
-        //     $this->assertEquals($test_author_2, $result);
-        // }
-        //
+        function testFind()
+        {
+            $author_name_1 = "Secrets of the Talking Jaguar";
+            $test_author_1 = new Author($author_name_1);
+            $test_author_1->save();
+
+            $author_name_2 = "The Smell of Rain on Dust";
+            $test_author_2 = new Author($author_name_2);
+            $test_author_2->save();
+
+            $result = Author::find($test_author_2->getId());
+
+            $this->assertEquals($test_author_2, $result);
+        }
+
         // function testUpdateAuthorName()
         // {
         //     $author_name = "The Little Prince";

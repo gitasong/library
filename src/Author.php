@@ -53,22 +53,22 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM authors;");
         }
-        //
-        // static function find($search_id)
-        // {
-        //     $returned_authors = $GLOBALS['DB']->prepare("SELECT * FROM authors WHERE id = :id");
-        //     $returned_authors->bindParam(':id', $search_id, PDO::PARAM_STR);
-        //     $returned_authors->execute();
-        //     foreach ($returned_authors as $author) {
-        //         $author_author_name = $author['author_name'];
-        //         $author_id = $author['id'];
-        //         if ($author_id == $search_id) {
-        //             $returned_author = new Author($author_author_name, $author_id);
-        //         }
-        //     }
-        //     return $returned_author;
-        // }
-        //
+
+        static function find($search_id)
+        {
+            $returned_authors = $GLOBALS['DB']->prepare("SELECT * FROM authors WHERE id = :id");
+            $returned_authors->bindParam(':id', $search_id, PDO::PARAM_STR);
+            $returned_authors->execute();
+            foreach ($returned_authors as $author) {
+                $author_author_name = $author['author_name'];
+                $author_id = $author['id'];
+                if ($author_id == $search_id) {
+                    $returned_author = new Author($author_author_name, $author_id);
+                }
+            }
+            return $returned_author;
+        }
+
         // function updateAuthorName($new_author_name)
         // {
         //     $executed = $GLOBALS['DB']->exec("UPDATE authors SET author_name = '{$new_author_name}' WHERE id = {$this->getId()};");
