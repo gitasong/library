@@ -112,8 +112,21 @@
             }
             return $books;
         }
+
+        static function findAuthorByName($search_author_name)
+        {
+            $returned_authors = $GLOBALS['DB']->prepare("SELECT * FROM authors WHERE author_name = :author_name");
+            $returned_authors->bindParam(':author_name', $search_author_name, PDO::PARAM_STR);
+            $returned_authors->execute();
+            foreach ($returned_authors as $author) {
+                $author_name = $author['author_name'];
+                $author_id = $author['id'];
+                if ($author_name == $search_author_name) {
+                    $returned_author = new Author($author_name, $author_id);
+                }
+            }
+            return $returned_author;
+        }
+
     }
-
-
-
 ?>

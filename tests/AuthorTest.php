@@ -173,5 +173,20 @@
             $this->assertEquals($test_author->getBooks(), [$test_book, $test_book_2]);
         }
 
+        function testFindAuthorByName()
+        {
+            $author_name_1 = "Isabel Allende";
+            $test_author_1 = new Author($author_name_1);
+            $test_author_1->save();
+
+            $author_name_2 = "Milan Kundera";
+            $test_author_2 = new Author($author_name_2);
+            $test_author_2->save();
+
+            $result = Author::findAuthorByName($test_author_2->getAuthorName());
+
+            $this->assertEquals($test_author_2, $result);
+        }
+
     }
 ?>
