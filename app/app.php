@@ -30,7 +30,7 @@
 
     $app->get("/edit_book/{id}", function($id) use ($app) {
         $book = Book::find($id);
-        return $app['twig']->render('edit_book.html.twig', array('book' => $book));
+        return $app['twig']->render('edit_book.html.twig', array('book' => $book, 'all_authors' => Author::getAll()));
     });
 
     $app->patch("/edit_book/{id}", function($id) use ($app) {
