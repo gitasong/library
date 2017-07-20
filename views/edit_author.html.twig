@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Midtown Public Library | Edit Author</title>
+    </head>
+    <body>
+        <h1>Midtown Public Library | Edit Author</h1>
+
+        <h2>{{ author.getTitle }}</h2>
+        <!-- {*% if all_authors is not empty %}
+            {*% for author in all_authors %}
+                <p>{*{ author.getTitle }}</p>
+            {*% endfor %}
+        {*% endif %} -->
+
+        <h2>Edit Author</h2>
+        <form action="/edit_author/{{ author.getId }}" name="edit_author" method="post">
+            <input name="_method" type="hidden" value="patch">
+
+            <label for="title">New Author Name: </label>
+            <input type="title" name="title" type="text" required>
+
+            <button type="submit" name="button">Update Author</button>
+        </form>
+
+        <h2>Assign A Book To An Author</h2> <!-- needs to be dropdown menu -->
+        <form action="/assign_author" name="assign_author" method="post">
+            <label for="author_name">Add A Book: </label>
+            <input type="author_name" name="author_name" type="text" required>
+
+            <button type="submit" name="button">Add Book</button>
+        </form>
+
+        <form action="/delete_author/{{ author.getId }}" method="post">
+            <input name="_method" type="hidden" value="delete">
+
+            <button type="submit">Delete Author</button>
+        </form>
+    <p><a href="/">Home</a></p>
+    </body>
+</html>
