@@ -9,6 +9,13 @@
                 <div class="row">
                     <h1>Welcome to Midtown Public Library! | Catalog</h1>
                     <div class="col-md-6">
+                        <form id="search_by_title" action="/search_by_title" method="post">
+                            <label for="book_title">Find A Book By Title: </label>
+                            <input type="text" name="book_title">
+
+                            <button type="submit" name="search_by_title">Go!</button>
+                        </form>
+
                         <h2>Add A Book</h2>
                         <form action="/add_book" name="add_book" method="post">
                             <label for="title">Add A Book: </label>
@@ -26,6 +33,13 @@
                     </div>
 
                     <div class="col-md-6">
+                        <form id="search_by_author" action="/search_by_author" method="post">
+                            <label for="book_author_name">Find A Book By Author: </label>
+                            <input type="text" name="book_author_name">
+
+                            <button type="submit" name="search_by_author">Go!</button>
+                        </form>
+
                         <h2>Add An Author</h2>
                         <form action="/add_author" name="add_author" method="post">
                             <label for="author_name">Add An Author: </label>
