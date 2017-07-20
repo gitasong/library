@@ -47,7 +47,7 @@
     });
 
     $app->post("/add_author", function() use ($app) {
-        $author_name = $_POST['name'];
+        $author_name = $_POST['author_name'];
         $new_author = new Author($author_name);
         $new_author->save();
         return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
