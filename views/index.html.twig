@@ -1,31 +1,47 @@
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Midtown Public Library | Home</title>
     </head>
     <body>
-        <h1>Welcome to Midtown Public Library! | Home</h1>
+        <div class="container-fluid">
+            <div class="container main">
+                <div class="row">
+                    <h1>Welcome to Midtown Public Library! | Catalog</h1>
+                    <div class="col-md-6">
+                        <h2>Add A Book</h2>
+                        <form action="/add_book" name="add_book" method="post">
+                            <label for="title">Add A Book: </label>
+                            <input type="title" name="title" type="text" required>
 
-        <h2>Add A Book</h2>
-        <form action="/add_book" name="add_book" method="post">
-            <label for="title">Add A Book: </label>
-            <input type="title" name="title" type="text" required>
+                            <button type="submit" name="button">Add Book</button>
+                        </form>
 
-            <button type="submit" name="button">Add Book</button>
-        </form>
+                        <h2>View All Books</h2>
+                        {% if all_books is not empty %}
+                            {% for book in all_books %}
+                                <p><a href="/edit_book/{{ book.getId }}">{{ book.getTitle }}</a></p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
 
-        <h2>Add An Author</h2>
-        <form action="/add_author" name="add_author" method="post">
-            <label for="name">Add An Author: </label>
-            <input type="name" name="name" type="text" required>
+                    <div class="col-md-6">
+                        <h2>Add An Author</h2>
+                        <form action="/add_author" name="add_author" method="post">
+                            <label for="name">Add An Author: </label>
+                            <input type="name" name="name" type="text" required>
 
-            <button type="submit" name="button">Add Author</button>
-        </form>
-
-        <h2>Catalog | View All Books</h2>
-        {% if all_books is not empty %}
-            {% for book in all_books %}
-                <p><a href="/edit_book/{{ book.getId }}">{{ book.getTitle }}</a></p>
-            {% endfor %}
-        {% endif %}
+                            <button type="submit" name="button">Add Author</button>
+                        </form>
+                        <h2>View All Authors</h2>
+                        {% if all_authors is not empty %}
+                            {% for author in all_authors %}
+                                <p><a href="/edit_author/{{ author.getId }}">{{ author.getAuthorName }}</a></p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
