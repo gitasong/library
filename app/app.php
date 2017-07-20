@@ -68,7 +68,7 @@
     $app->delete("/delete_author/{id}", function($id) use ($app) {
         $author = Author::find($id);
         $author->delete();
-        return $app['twig']->render('index.html.twig', array('all_authors' => Author::getAll()));
+        return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
     });
 
     return $app;
