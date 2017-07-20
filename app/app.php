@@ -3,6 +3,7 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Book.php";
     require_once __DIR__."/../src/Author.php";
+    require_once __DIR__."/../src/Patron.php";
 
     $server = 'mysql:host=localhost:8889;dbname=library';
     $username = 'root';
@@ -24,7 +25,27 @@
     Request::enableHttpMethodParameterOverride();
 
     $app->get("/", function() use ($app) {
+        return $app['twig']->render('index.html.twig');
+    });
+
+    $app->get("/librarian", function() use ($app) {
         return $app['twig']->render('librarian.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
+    });
+
+    $app->get("/patron", function() use ($app) {
+        return $app['twig']->render('patrons.html.twig', array('all_patrons' => Patron::getAll()));
+    });
+
+    $app->post("/add_patron", function() use ($app) {
+        $patron_name = $_POST['patron_name'];
+        $new_patron = new Patron($patron_name);
+        $new_patron->save();
+        return $app['twig']->render('patrons.html.twig', array('patron' => $new_patron, 'all_patrons' => Patron::getAll()));
+    });
+
+    $app->get("/patron/{id}", function($id) use ($app) {
+        $patron = Patron::find($id);
+        return $app['twig']->render('patron.html.twig', array('patron' => $patron, 'all_books' => Book::getAll(), 'checked_out_books' => Book::getAll()));  // change 'checked_out_books' => Book::getAll to patron->getBooks()
     });
 
     $app->post("/search_by_title", function() use ($app) {
