@@ -140,40 +140,40 @@
             $this->assertEquals([$test_patron_2], Patron::getAll());
         }
 
-        // function testAddBook()
-        // {
-        //     $title = "Good Times";
-        //     $test_book = new Book($title);
-        //     $test_book->save();
-        //
-        //     $patron_name = "Maya Angelou";
-        //     $test_patron = new Patron($patron_name);
-        //     $test_patron->save();
-        //
-        //     $test_patron->addBook($test_book);
-        //
-        //     $this->assertEquals($test_patron->getBooks(), [$test_book]);
-        // }
-        //
-        // function testGetBooks()
-        // {
-        //     $title = "Alice in Wonderland";
-        //     $test_book = new Book($title);
-        //     $test_book->save();
-        //
-        //     $$title = "Ghostwriter";
-        //     $test_book_2 = new Book($title);
-        //     $test_book_2->save();
-        // 
-        //     $patron_name = "Richard Ford";
-        //     $test_patron = new Patron($patron_name);
-        //     $test_patron->save();
-        //
-        //     $test_patron->addBook($test_book);
-        //     $test_patron->addBook($test_book_2);
-        //
-        //     $this->assertEquals($test_patron->getBooks(), [$test_book, $test_book_2]);
-        // }
+        function testAddBook()
+        {
+            $title = "Good Times";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $patron_name = "Maya Angelou";
+            $test_patron = new Patron($patron_name);
+            $test_patron->save();
+
+            $test_patron->addBook($test_book);
+
+            $this->assertEquals($test_patron->getBooks(), [$test_book]);
+        }
+
+        function testGetBooks()
+        {
+            $title = "Alice in Wonderland";
+            $test_book = new Book($title);
+            $test_book->save();
+
+            $$title = "Ghostwriter";
+            $test_book_2 = new Book($title);
+            $test_book_2->save();
+
+            $patron_name = "Richard Ford";
+            $test_patron = new Patron($patron_name);
+            $test_patron->save();
+
+            $test_patron->addBook($test_book);
+            $test_patron->addBook($test_book_2);
+
+            $this->assertEquals($test_patron->getBooks(), [$test_book, $test_book_2]);
+        }
 
         // function testFindPatronByName()
         // {

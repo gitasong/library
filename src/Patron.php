@@ -90,28 +90,28 @@
             }
         }
 
-        // function addBook($book)
-        // {
-        //     $executed = $GLOBALS['DB']->exec("INSERT INTO patrons_books (patron_id, book_id) VALUES ({$this->getId()}, {$book->getId()});");
-        //     if ($executed) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }
-        //
-        // function getBooks()
-        // {
-        //     $returned_books = $GLOBALS['DB']->query("SELECT books.* FROM patrons JOIN patrons_books ON (patrons_books.patron_id = patron_id) JOIN books ON (books.id = patrons_books.book_id) WHERE patrons.id = {$this->getId()};");
-        //     $books = array();
-        //     foreach($returned_books as $book) {
-        //         $title = $book['title'];
-        //         $book_id = $book['id'];
-        //         $new_book = new Book($title, $book_id);
-        //         array_push($books, $new_book);
-        //     }
-        //     return $books;
-        // }
+        function addBook($book)
+        {
+            $executed = $GLOBALS['DB']->exec("INSERT INTO checkout (patron_id, book_id) VALUES ({$this->getId()}, {$book->getId()});");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function getBooks()
+        {
+            $returned_books = $GLOBALS['DB']->query("SELECT books.* FROM patrons JOIN checkout ON (checkout.patron_id = patron_id) JOIN books ON (books.id = checkout.book_id) WHERE patrons.id = {$this->getId()};");
+            $books = array();
+            foreach($returned_books as $book) {
+                $title = $book['title'];
+                $book_id = $book['id'];
+                $new_book = new Book($title, $book_id);
+                array_push($books, $new_book);
+            }
+            return $books;
+        }
 
         // static function findPatronByName($search_patron_name)
         // {
