@@ -41,9 +41,9 @@
             $returned_authors = $GLOBALS['DB']->query("SELECT * FROM authors");
             $authors = array();
             foreach($returned_authors as $author) {
-                $author_author_name = $author['author_name'];
+                $author_name = $author['author_name'];
                 $author_id = $author['id'];
-                $new_author = new Author($author_author_name, $author_id);
+                $new_author = new Author($author_name, $author_id);
                 array_push($authors, $new_author);
             }
             return $authors;
@@ -60,10 +60,10 @@
             $returned_authors->bindParam(':id', $search_id, PDO::PARAM_STR);
             $returned_authors->execute();
             foreach ($returned_authors as $author) {
-                $author_author_name = $author['author_name'];
+                $author_name = $author['author_name'];
                 $author_id = $author['id'];
                 if ($author_id == $search_id) {
-                    $returned_author = new Author($author_author_name, $author_id);
+                    $returned_author = new Author($author_name, $author_id);
                 }
             }
             return $returned_author;
