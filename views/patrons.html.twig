@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>Midtown Public Library | Patron</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="container main">
+                <div class="row">
+                    <h1>Midtown Public Library | Register</h1>
+
+                    <h2>Register As A Patron</h2>
+                    <form action="/add_patron" name="add_patron" method="post">
+                        <label for="patron_name">Patron Name: </label>
+                        <input type="patron_name" name="patron_name" type="text" required>
+
+                        <button type="submit" name="button">Register</button>
+                    </form>
+
+                    <h2>View All Patrons</h2>
+                    {% if all_patrons is not empty %}
+                        {% for patron in all_patrons %}
+                            <p><a href="/patron/{{ patron.getId }}">{{ patron.getPatronName }}</a></p>
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
