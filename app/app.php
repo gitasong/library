@@ -45,13 +45,13 @@
 
     $app->get("/patron/{id}", function($id) use ($app) {
         $patron = Patron::find($id);
-        return $app['twig']->render('patron.html.twig', array('patron' => $patron, 'all_books' => Book::getAll(), 'checked_out_books' => Book::getAll()));  // change 'checked_out_books' => Book::getAll to patron->getBooks()
+        return $app['twig']->render('patron.html.twig', array('patron' => $patron, 'all_books' => Book::getAll(), 'checked_out_books' => $patron->getBooks())); 
     });
 
     $app->post("/checkout_book/{id}", function($id) use ($app) {
         $patron = Patron::find($id);
         $book = Book::find($_POST['all_books']);
-        $patron->addBook($book); // need this function
+        $patron->addBook($book);
         return $app['twig']->render('patron.html.twig', array('patron' => $patron, 'all_books' => Book::getAll(), 'checked_out_books' => $patron->getBooks()));
     });
 
