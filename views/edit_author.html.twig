@@ -5,12 +5,12 @@
     <body>
         <h1>Midtown Public Library | Edit Author</h1>
 
-        <h2>{{ author.getAuthorName }}</h2>
-        <!-- {*% if all_authors is not empty %}
-            {*% for author in all_authors %}
-                <p>{*{ author.getTitle }}</p>
-            {*% endfor %}
-        {*% endif %} -->
+        <h2>{{ author.getAuthorName }} - Books</h2>
+        {% if author_books is not empty %}
+            {% for book in author_books %}
+                <p>{{ book.getTitle }}</p>
+            {% endfor %}
+        {% endif %}
 
         <h2>Edit Author</h2>
         <form action="/edit_author/{{ author.getId }}" name="edit_author" method="post">
@@ -23,7 +23,7 @@
         </form>
 
         <h2>Assign A Book To An Author</h2> <!-- needs to be dropdown menu -->
-        <form action="/assign_book" name="assign_book" method="post">
+        <form action="/assign_book/{{ author.getId }}" name="assign_book" method="post">
             <label for="title">Add A Book: </label>
             <select name="all_books">
                 {% for book in all_books %}
