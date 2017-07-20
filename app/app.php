@@ -30,7 +30,7 @@
 
     $app->get("/edit_book/{id}", function($id) use ($app) {
         $book = Book::find($id);
-        return $app['twig']->render('edit_book.html.twig', array('book' => $book, 'all_authors' => Author::getAll()));
+        return $app['twig']->render('edit_book.html.twig', array('book' => $book, 'all_authors' => Author::getAll(), 'book_authors' => $book->getAuthors()));
     });
 
     $app->patch("/edit_book/{id}", function($id) use ($app) {
@@ -38,6 +38,13 @@
         $book = Book::find($id);
         $book->updateTitle($title);
         return $app['twig']->render('edit_book.html.twig', array('book' => $book));
+    });
+
+    $app->post("/assign_author/{id}", function($id) use ($app) {
+        $book = Book::find($id);
+        $author = Author::find($_POST['all_authors']);
+        $book->addAuthor($author);
+        return $app['twig']->render('edit_book.html.twig', array('book' => $book, 'all_authors' => Author::getAll(), 'book_authors' => $book->getAuthors()));
     });
 
     $app->delete("/delete_book/{id}", function($id) use ($app) {
