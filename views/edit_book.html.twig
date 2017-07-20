@@ -28,7 +28,7 @@
             <!-- <input type="author_name" name="author_name" type="text" required> -->
             <select name="all_authors">
                 {% for author in all_authors %}
-                    <option value="{{ get.authorId }}">{{ get.authorName }}</option>
+                    <option value="{{ author.getId }}">{{ author.getAuthorName }}</option>
                 {% endfor %}
             </select>
 
