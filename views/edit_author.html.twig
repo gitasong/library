@@ -25,8 +25,11 @@
         <h2>Assign A Book To An Author</h2> <!-- needs to be dropdown menu -->
         <form action="/assign_book" name="assign_book" method="post">
             <label for="title">Add A Book: </label>
-            <input type="title" name="title" type="text" required>
-
+            <select name="all_books">
+                {% for book in all_books %}
+                    <option value="{{ book.getId }}">{{ book.getTitle }}</option>
+                {% endfor %}
+            </select>
             <button type="submit" name="button">Add Book</button>
         </form>
 
