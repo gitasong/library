@@ -9,7 +9,13 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
+    use Symfony\Component\Debug\Debug;
+    Debug::enable();
+
     $app = new Silex\Application();
+
+    $app['debug'] = true;
+
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
     ));
@@ -19,6 +25,19 @@
 
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
+    });
+
+    $app->post("/search_by_title", function() use ($app) {
+        $book_title = $_POST['book_title'];
+        $found_book = Book::findBookByTitle($book_title);
+        return $app['twig']->render('edit_book.html.twig', array('book' => $found_book, 'all_authors' => Author::getAll(), 'book_authors' => $found_book->getAuthors()));
+    });
+
+    $app->post("/search_by_author", function() use ($app) {
+        $book_author_name = $_POST['book_author_name'];
+        $found_author = Author::findAuthorByName($book_author_name);
+        $found_books = $found_author->getBooks();
+        return $app['twig']->render('edit_author.html.twig', array('author' => $found_author, 'all_books' => Book::getAll(), 'author_books' => $found_books));
     });
 
     $app->post("/add_book", function() use ($app) {
