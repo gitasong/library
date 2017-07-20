@@ -24,7 +24,7 @@
     Request::enableHttpMethodParameterOverride();
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
+        return $app['twig']->render('librarian.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
     });
 
     $app->post("/search_by_title", function() use ($app) {
@@ -44,7 +44,7 @@
         $title = $_POST['title'];
         $new_book = new Book($title);
         $new_book->save();
-        return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll()));
+        return $app['twig']->render('librarian.html.twig', array('all_books' => Book::getAll()));
     });
 
     $app->get("/edit_book/{id}", function($id) use ($app) {
@@ -69,14 +69,14 @@
     $app->delete("/delete_book/{id}", function($id) use ($app) {
         $book = Book::find($id);
         $book->delete();
-        return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll()));
+        return $app['twig']->render('librarian.html.twig', array('all_books' => Book::getAll()));
     });
 
     $app->post("/add_author", function() use ($app) {
         $author_name = $_POST['author_name'];
         $new_author = new Author($author_name);
         $new_author->save();
-        return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
+        return $app['twig']->render('librarian.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
     });
 
     $app->get("/edit_author/{id}", function($id) use ($app) {
@@ -94,7 +94,7 @@
     $app->delete("/delete_author/{id}", function($id) use ($app) {
         $author = Author::find($id);
         $author->delete();
-        return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
+        return $app['twig']->render('librarian.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
     });
 
     $app->post("/assign_book/{id}", function($id) use ($app) {
