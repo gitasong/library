@@ -48,6 +48,13 @@
         return $app['twig']->render('patron.html.twig', array('patron' => $patron, 'all_books' => Book::getAll(), 'checked_out_books' => Book::getAll()));  // change 'checked_out_books' => Book::getAll to patron->getBooks()
     });
 
+    $app->post("/checkout_book/{id}", function($id) use ($app) {
+        $patron = Patron::find($id);
+        $book = Book::find($_POST['all_books']);
+        $patron->addBook($book); // need this function
+        return $app['twig']->render('patron.html.twig', array('patron' => $patron, 'all_books' => Book::getAll(), 'checked_out_books' => $patron->getBooks()));
+    });
+
     $app->post("/search_by_title", function() use ($app) {
         $book_title = $_POST['book_title'];
         $found_book = Book::findBookByTitle($book_title);
