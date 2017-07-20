@@ -2,6 +2,7 @@
 
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Book.php";
+    require_once __DIR__."/../src/Author.php";
 
     $server = 'mysql:host=localhost:8889;dbname=library';
     $username = 'root';
@@ -17,7 +18,7 @@
     Request::enableHttpMethodParameterOverride();
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll()));
+        return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
     });
 
     $app->post("/add_book", function() use ($app) {
@@ -45,15 +46,11 @@
         return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll()));
     });
 
-    $app->get("/add_author", function() use ($app) {
-        return $app['twig']->render('authors.html.twig', array('all_authors' => Author::getAll()));
-    });
-
     $app->post("/add_author", function() use ($app) {
         $author_name = $_POST['name'];
         $new_author = new Author($author_name);
         $new_author->save();
-        return $App['twig']->render('authors.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
+        return $app['twig']->render('index.html.twig', array('all_books' => Book::getAll(), 'all_authors' => Author::getAll()));
     });
 
     return $app;
