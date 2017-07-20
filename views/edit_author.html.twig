@@ -5,7 +5,7 @@
     <body>
         <h1>Midtown Public Library | Edit Author</h1>
 
-        <h2>{{ author.getTitle }}</h2>
+        <h2>{{ author.getAuthorName }}</h2>
         <!-- {*% if all_authors is not empty %}
             {*% for author in all_authors %}
                 <p>{*{ author.getTitle }}</p>
@@ -16,8 +16,8 @@
         <form action="/edit_author/{{ author.getId }}" name="edit_author" method="post">
             <input name="_method" type="hidden" value="patch">
 
-            <label for="title">New Author Name: </label>
-            <input type="title" name="title" type="text" required>
+            <label for="author_name">New Author Name: </label>
+            <input type="author_name" name="author_name" type="text" required>
 
             <button type="submit" name="button">Update Author</button>
         </form>
