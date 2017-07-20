@@ -5,8 +5,9 @@
     * @backupStaticAttributes disabled
     */
 
-    require_once "src/Book.php";
     require_once "src/Author.php";
+    require_once "src/Book.php";
+    require_once "src/Patron.php";
 
     $server = 'mysql:host=localhost:8889;dbname=library_test';
     $username = 'root';
@@ -19,6 +20,7 @@
         {
             Book::deleteAll();
             Author::deleteAll();
+            Patron::deleteAll();
         }
 
         function testGetTitle()
