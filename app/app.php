@@ -55,7 +55,7 @@
 
     $app->get("/edit_author/{id}", function($id) use ($app) {
         $author = Author::find($id);
-        return $app['twig']->render('edit_author.html.twig', array('author' => $author));
+        return $app['twig']->render('edit_author.html.twig', array('author' => $author, 'all_books' => Book::getAll()));
     });
 
     $app->patch("/edit_author/{id}", function($id) use ($app) {
